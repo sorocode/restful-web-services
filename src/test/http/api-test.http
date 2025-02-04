@@ -8,6 +8,7 @@ Accept: application/json
 
 ### GET All users
 GET {{host}}/users
+Accept: application/xml
 
 ### GET user by ID
 GET {{host}}/users/{{userId}}
