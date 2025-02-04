@@ -38,3 +38,11 @@ X-API-VERSION:1
 ### Versioning test용(Header Versioning 2)
 GET {{host}}/person/header
 X-API-VERSION:2
+
+### Versioning test용(Accept Header Versioning 1)
+GET {{host}}/person/accept
+Accept: application/vnd.company.app-v1+json
+
+### Versioning test용(Accept Header Versioning 2)
+GET {{host}}/person/accept
+Accept: application/vnd.company.app-v2+json
