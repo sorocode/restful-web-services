@@ -3,7 +3,7 @@ GET http://localhost:8080/users/13123
 Accept: application/json
 
 
-### GET request to example server
+### GET All users
 GET http://localhost:8080/users
 
 
@@ -16,3 +16,5 @@ Content-Type: application/json
   "birthDate": "2000-01-07"
 }
 
+### Remove user by id
+DELETE http://localhost:8080/users/3
