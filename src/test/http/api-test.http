@@ -18,8 +18,8 @@ POST {{host}}/users
 Content-Type: application/json
 
 {
-  "name": "soroso1",
-  "birthDate": "2000-01-07"
+  "name": "soroso",
+  "birthDate": "2032-01-07"
 }
 
 ### Remove user by id
