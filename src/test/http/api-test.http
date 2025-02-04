@@ -1,0 +1,12 @@
+### GET request to example server
+GET http://localhost:8080/users
+
+### Post 요청 테스트
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "soroso1",
+  "birthDate": "2000-01-07"
+}
+
