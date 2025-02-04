@@ -24,7 +24,7 @@ public class UserDaoService {
         return users.stream()
                 .filter(predicate)
                 .findFirst()
-                .get();
+                .orElse(null);
     }
 
     public User save(User user) {

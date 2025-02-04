@@ -23,14 +23,18 @@ public class UserResource {
     // GET /users/{id}
     @GetMapping("/users/{id}")
     public User retrieveUserById(@PathVariable int id) {
-        return service.findById(id);
+        User user = service.findById(id);
+        if(user == null) {
+            throw new UserNotFoundException("id:"+id);
+        }
+        return user;
     }
 
     // Post /users
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User savedUser=service.save(user);
-        
+
         // location - /users/4
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

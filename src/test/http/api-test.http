@@ -1,5 +1,11 @@
+### 404 반환 예시
+GET http://localhost:8080/users/13123
+Accept: application/json
+
+
 ### GET request to example server
 GET http://localhost:8080/users
+
 
 ### Post 요청 테스트
 POST http://localhost:8080/users
