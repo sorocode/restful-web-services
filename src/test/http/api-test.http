@@ -1,14 +1,20 @@
+@host = http://localhost:8080
+@userId=2
+
 ### 404 반환 예시
-GET http://localhost:8080/users/13123
+GET {{host}}/users/13123
 Accept: application/json
 
 
 ### GET All users
-GET http://localhost:8080/users
+GET {{host}}/users
+
+### GET user by ID
+GET {{host}}/users/{{userId}}
 
 
 ### Post 요청 테스트
-POST http://localhost:8080/users
+POST {{host}}/users
 Content-Type: application/json
 
 {
@@ -17,4 +23,4 @@ Content-Type: application/json
 }
 
 ### Remove user by id
-DELETE http://localhost:8080/users/3
+DELETE {{host}}/users/3
