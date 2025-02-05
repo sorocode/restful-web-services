@@ -73,3 +73,11 @@ Content-Type: application/json
 
 ### Remove user by id(JPA)
 DELETE {{host_jpa}}/users/{{userId}}
+
+### (POST) create Post 요청 테스트
+POST {{host_jpa}}/users/10001/posts
+Content-Type: application/json
+
+{
+  "description": "I want to be a great developer"
+}

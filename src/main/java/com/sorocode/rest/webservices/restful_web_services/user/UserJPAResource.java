@@ -1,5 +1,6 @@
 package com.sorocode.rest.webservices.restful_web_services.user;
 
+import com.sorocode.rest.webservices.restful_web_services.jpa.PostRepository;
 import com.sorocode.rest.webservices.restful_web_services.jpa.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.EntityModel;
@@ -17,12 +18,11 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 public class UserJPAResource {
-    private UserDaoService service;
     private UserRepository respository;
-
-    public UserJPAResource(UserDaoService service, UserRepository respository) {
-        this.service = service;
+    private PostRepository postRepository;
+    public UserJPAResource(UserDaoService service, UserRepository respository,PostRepository postRepository) {
         this.respository = respository;
+        this.postRepository=postRepository;
     }
 
     // GET /users
@@ -64,5 +64,30 @@ public class UserJPAResource {
     @DeleteMapping("/jpa/users/{id}")
     public void deleteUser(@PathVariable int id) {
         respository.deleteById(id);
+    }
+
+    @GetMapping("/jpa/users/{id}/posts")
+    public List<Post> retrievePostsForUser(@PathVariable int id) {
+        Optional<User> user = respository.findById(id);
+        if(user.isEmpty()) {
+            throw new UserNotFoundException("id:"+id);
+        }
+        return user.get().getPosts();
+    }
+
+    @PostMapping("/jpa/users/{id}/posts")
+    public ResponseEntity<Post> CreatePostForUser(@PathVariable int id,@Valid @RequestBody Post post) {
+        Optional<User> user = respository.findById(id);
+        if(user.isEmpty()) {
+            throw new UserNotFoundException("id:"+id);
+        }
+        post.setUser(user.get());
+        Post savedPost = postRepository.save(post);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedPost.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
     }
 }

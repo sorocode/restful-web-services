@@ -2,9 +2,18 @@ package com.sorocode.rest.webservices.restful_web_services.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Post {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Id
     @GeneratedValue
     private Integer id;
@@ -14,6 +23,7 @@ public class Post {
     @JsonIgnore
     private User user;
 
+    @Size(min = 10)
     public String getDescription() {
         return description;
     }
