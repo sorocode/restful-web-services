@@ -62,12 +62,12 @@ Accept: application/json
 ### GET user by ID(JPA)
 GET {{host_jpa}}/users/{{userId}}
 
-### Post 요청 테스트
+### Create User
 POST {{host_jpa}}/users
 Content-Type: application/json
 
 {
-  "name": "tes2t",
+  "name": "soroso",
   "birthDate": "2012-01-07"
 }
 
@@ -75,9 +75,9 @@ Content-Type: application/json
 DELETE {{host_jpa}}/users/{{userId}}
 
 ### (POST) create Post 요청 테스트
-POST {{host_jpa}}/users/10001/posts
+POST {{host_jpa}}/users/1/posts
 Content-Type: application/json
 
 {
-  "description": "I want to be a great developer"
+  "description": "I'm learning Docker"
 }
