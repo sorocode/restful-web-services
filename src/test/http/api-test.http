@@ -1,11 +1,13 @@
 
-@host = http://localhost:8080
+@host=http://localhost:8080
+@host_jpa=http://localhost:8080/jpa
 @userId=2
 
 ### 헬로월드 i18n
 GET http://localhost:8080/hello-world-internationalized
 Accept: application/json
 Accept-Language: ko
+
 ### 404 반환 예시
 GET {{host}}/users/13123
 Accept: application/json
@@ -13,10 +15,14 @@ Accept: application/json
 
 ### GET All users
 GET {{host}}/users
-Accept: application/xml
+Accept: application/json
+
+
 
 ### GET user by ID
 GET {{host}}/users/{{userId}}
+
+
 
 
 ### Post 요청 테스트
@@ -30,6 +36,7 @@ Content-Type: application/json
 
 ### Remove user by id
 DELETE {{host}}/users/3
+
 
 ### Versioning test용(Header Versioning 1)
 GET {{host}}/person/header
@@ -46,3 +53,23 @@ Accept: application/vnd.company.app-v1+json
 ### Versioning test용(Accept Header Versioning 2)
 GET {{host}}/person/accept
 Accept: application/vnd.company.app-v2+json
+
+
+### GET All users(JPA)
+GET {{host_jpa}}/users
+Accept: application/json
+
+### GET user by ID(JPA)
+GET {{host_jpa}}/users/{{userId}}
+
+### Post 요청 테스트
+POST {{host_jpa}}/users
+Content-Type: application/json
+
+{
+  "name": "tes2t",
+  "birthDate": "2012-01-07"
+}
+
+### Remove user by id(JPA)
+DELETE {{host_jpa}}/users/{{userId}}
