@@ -79,5 +79,5 @@ POST {{host_jpa}}/users/1/posts
 Content-Type: application/json
 
 {
-  "description": "I'm learning Docker"
+  "description": "I'm learning PostgreSQL"
 }
